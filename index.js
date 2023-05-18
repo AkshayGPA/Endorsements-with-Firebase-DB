@@ -1,7 +1,7 @@
 
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 
-import {getDatabase, ref, push} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = 
 {
@@ -19,26 +19,33 @@ const fromTextEl = document.getElementById("from-text");
 const toTextEl = document.getElementById("to-text");
 const publishBtnEl = document.getElementById("publish-btn");
 
-// let endorsementArr = [];
+let endorsementListEl = document.getElementById("endorsement-list");
 
 publishBtnEl.addEventListener("click", function() {
 
   // if()
-
-  // let inputText = inputTextEl.value;
-  // let toTextEl = toTextEl.value;
-  // let fromTextEl = fromTextEl.value;
 
   let endorsementObj = {
     "to": toTextEl.value,
     "text": inputTextEl.value,
     "from": fromTextEl.value
   }
-  // endorsementArr.push(endorsementObj);
-  push(endorsement, endorsementObj);
-  
-  let endorsementListEl = document.getElementById("endorsement-list");
 
+  push(endorsement, endorsementObj);
+
+  appendEndorsementsToEndorsementListEl(endorsementObj);
+})
+
+onValue(endorsement, function(snapshot) {
+  let endorsementArr = Object.entries(snapshot.val());
+  // console.log(endorsementArr);
+
+  for (let i=0 ; i<endorsementArr.length ; i++) {
+    console.log(endorsementArr[i]);
+  }
+})  
+
+function appendEndorsementsToEndorsementListEl(endorsementObj) {
   endorsementListEl.innerHTML += 
   `
     <li class="endorsement-list-item">
@@ -49,4 +56,4 @@ publishBtnEl.addEventListener("click", function() {
       </div>
     </li>
   `
-})
+}
