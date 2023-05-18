@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-color: rgb(23, 23, 22); 
+  /* Change background-color to black at end */
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#center-div {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 320px;
+  width: 320px;
+  /* border: 1px solid black; */
+  padding: 5px;
+}
+
+#logo {
+  width: 150px;
+  margin: 20px auto 0 auto;
+}
+
+#heading {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 24px;
+  margin: 5px auto;
+  color: white;
+}
+
+#textbox {
+  box-sizing: border-box;
+  width: 100%;
+  height: 90px;
+  padding: 8px;
+  border-radius: 7px;
+  font-family: 'Roboto', sans-serif;
+  
+  background-color: #444059;
+  color: white;
+  caret-color: white;
+}
+
+#input-inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input {
+  height: 30px;
+  width: 42.5%;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+  border-radius: 7px;
+  
+  background-color: #444059;
+  color: white;
+}
+
+.inline-textbox {
+  caret-color: white;
+  padding: 5px 10px;
+}
+
+.inline-textbox:hover, .inline-textbox:active {
+  cursor: text;
+  caret-color: white;
+}
+
+#publish-btn {
+  display: block;
+  padding: 10px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  /* color: white; */
+  background-color: #28A9F1;
+  border-style: none;
+  border-radius: 7px; 
+}
+
+
+#endorsement-div {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  max-width: 320px;
+  width: 320px;
+  padding: 5px;
+  margin-top: 8px;
+}
+
+#endorsement-title {
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 5px auto;
+  padding: 0;
+}
+
+#endorsement-list {
+  padding: 8px;
+  margin: 5px 0;
+}
+
+.endorsement-list-item {
+  /* display: flex;
+  flex-direction: column; */
+  margin-top: 10px;
+  list-style: none;
+  padding: 10px;
+  background-color: white;
+  color: black;
+}
+
+.endorsement-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#disp-to, #disp-from {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 3px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#disp-text {
+  margin: 5px 0;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
