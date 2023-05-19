@@ -22,7 +22,7 @@ body {
   flex-direction: column;
   gap: 5px;
   max-width: 320px;
-  width: 310px;
+  width: 300px;
   /* border: 1px solid black; */
   padding: 5px;
 }
@@ -98,7 +98,7 @@ input {
   flex-direction: column;
   /* border: 1px solid black; */
   max-width: 320px;
-  width: 320px;
+  width: 300px;
   padding: 5px;
   margin-top: 8px;
 }

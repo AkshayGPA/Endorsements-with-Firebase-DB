@@ -1,7 +1,7 @@
 
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 
-import {getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {getDatabase, ref, push, onValue, remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = 
 {
@@ -33,19 +33,56 @@ publishBtnEl.addEventListener("click", function() {
 
   push(endorsement, endorsementObj);
 
-  appendEndorsementsToEndorsementListEl(endorsementObj);
+  clearInput();
 })
 
 onValue(endorsement, function(snapshot) {
-  let endorsementArr = Object.entries(snapshot.val());
-  // console.log(endorsementArr);
+  if (snapshot.exists()) {
 
-  for (let i=0 ; i<endorsementArr.length ; i++) {
-    console.log(endorsementArr[i]);
+    let endorsementArr = Object.entries(snapshot.val());
+  
+    clearEndorsements();
+  
+    for (let i=endorsementArr.length-1 ; i>=0 ; i--) {
+      let newEndorsementArr = endorsementArr[i];
+      
+      let newEndorsementObj = newEndorsementArr[1];
+
+      let newEndorsementObjID = newEndorsementArr[0];
+      // console.log(newEndorsementObjID);
+      
+      appendEndorsementsToEndorsementListEl(newEndorsementObj, newEndorsementObjID);
+    }
+  }
+  else {
+    endorsementListEl.innerHTML = "No endorsements here... yet";
   }
 })  
 
-function appendEndorsementsToEndorsementListEl(endorsementObj) {
+function appendEndorsementsToEndorsementListEl(endorsementObj, endorsementObjectID) {
+
+  let newListEl = document.createElement("li");
+  newListEl.setAttribute("class", "endorsement-list-item");
+  
+  newListEl.innerHTML = 
+  `
+    <div class="endorsement-flex">
+      <p id="disp-to">${endorsementObj.to}</p>
+      <p id="disp-text">${endorsementObj.text}</p>
+      <p id="disp-from">${endorsementObj.from}</p>
+    </div>
+  ` 
+
+  newListEl.addEventListener("click", function() {
+    let endorsementLocationinDB = ref(database, `endorsements/${endorsementObjectID}`);
+    // console.log(endorsementLocationinDB);
+
+    remove(endorsementLocationinDB);
+  })
+
+  endorsementListEl.append(newListEl);
+
+  /*
   endorsementListEl.innerHTML += 
   `
     <li class="endorsement-list-item">
@@ -56,4 +93,15 @@ function appendEndorsementsToEndorsementListEl(endorsementObj) {
       </div>
     </li>
   `
+  */
+}
+
+function clearEndorsements() {
+  endorsementListEl.innerHTML = "";
+}
+
+function clearInput() {
+  inputTextEl.value = "";
+  fromTextEl.value = "";
+  toTextEl.value = "";
 }
