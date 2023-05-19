@@ -88,9 +88,9 @@ function appendEndorsementsToEndorsementListEl(endorsementObj, endorsementObject
   newListEl.innerHTML = 
   `
     <div class="endorsement-flex">
-      <p id="disp-to">${endorsementObj.to}</p>
+      <p id="disp-to">To ${endorsementObj.to}</p>
       <p id="disp-text">${endorsementObj.text}</p>
-      <p id="disp-from">${endorsementObj.from}</p>
+      <p id="disp-from">From ${endorsementObj.from}</p>
     </div>
   ` 
 
