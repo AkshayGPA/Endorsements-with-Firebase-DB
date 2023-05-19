@@ -23,18 +23,39 @@ let endorsementListEl = document.getElementById("endorsement-list");
 
 publishBtnEl.addEventListener("click", function() {
 
-  // if()
+  let toValue = toTextEl.value;
+  let fromValue = fromTextEl.value;
+  let commentValue = inputTextEl.value;
+
 
   let endorsementObj = {
-    "to": toTextEl.value,
-    "text": inputTextEl.value,
-    "from": fromTextEl.value
+    "to": toValue,
+    "text": commentValue,
+    "from": fromValue
   }
 
-  push(endorsement, endorsementObj);
+  // * Added own code to push endorsements to database and display them only when the values are not empty strings or null value.
 
-  clearInput();
+  if (toValue !== "" || fromValue !== "" || commentValue !== "") {
+
+    if (commentValue.length < 15){
+      alert("The endorsement has to be at least 15 characters long");
+      return;
+    }
+    else {
+      push(endorsement, endorsementObj);
+    
+      clearInput();
+    }
+  }
+  else {
+    alert("Please write a comment(min 15 characters) and mention the names in the fields 'To' and 'From'");
+  }
+
 })
+
+// ***************************************************** //
+
 
 onValue(endorsement, function(snapshot) {
   if (snapshot.exists()) {

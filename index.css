@@ -82,6 +82,11 @@ input {
 
 #publish-btn {
   display: block;
+  
+  /* Added width and margin after moving the textbox, button & "to" and "from" inputs inside a form */
+  width: 100%;
+  margin-top: 5px;
+
   padding: 10px 0;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -90,6 +95,11 @@ input {
   background-color: #28A9F1;
   border-style: none;
   border-radius: 7px; 
+}
+
+#publish-btn:hover {
+  background-color: rgb(29, 152, 29);
+  cursor: grabbing;
 }
 
 
@@ -122,6 +132,11 @@ input {
   padding: 10px;
   background-color: white;
   color: black;
+}
+
+.endorsement-list-item:hover {
+  background-color: bisque;
+  cursor: grab;
 }
 
 .endorsement-flex {

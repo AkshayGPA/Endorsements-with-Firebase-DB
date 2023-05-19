@@ -21,14 +21,16 @@
       
       <h1 id="heading">We are the Champions</h1>
       
-      <textarea id="textbox" name="textbox" rows="4" cols="40" placeholder="Mention you comment here..."></textarea>
+      <form>
+        <textarea id="textbox" name="textbox" rows="4" cols="40" placeholder="Mention you comment here..." re></textarea>
 
-      <div id="input-inline">
-        <input type="text" id="from-text" class="inline-textbox" placeholder="From">
-        <input type="text" id="to-text" class="inline-textbox" placeholder="To">
-      </div>
+        <div id="input-inline">
+          <input type="text" id="from-text" class="inline-textbox" placeholder="From" required>
+          <input type="text" id="to-text" class="inline-textbox" placeholder="To" required>
+        </div>
 
-      <button type="submit" id="publish-btn">Publish</button>
+        <button type="submit" id="publish-btn">Publish</button>
+      </form>
     </div>
 
     <div id="endorsement-div" class="center">
